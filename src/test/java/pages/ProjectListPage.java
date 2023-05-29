@@ -10,6 +10,7 @@ public class ProjectListPage extends BasePage {
     public static final By CREATE_BUTTON = By.id("createButton");
     String PROJECT_NAME = "//*[@class='defect-title'][text()='%s']";
     String DROPDOWN_SETTINGS = "//*[text()='%s']/ancestor::tr//a[@class='btn btn-dropdown']";
+    String SETTINGS = "//*[@class='defect-title'][text()='%s']/ancestor::tr//a[text()='Settings']";
     String DELETE = "//*[@class='defect-title'][text()='%s']/ancestor::tr//button[text()='Delete']";
     public static final By DELETE_PROJECT_BUTTON = By.xpath("//span[text()='Delete project']");
     public static final By DELETE_MODAL = By.cssSelector(".ReactModal__Content");
@@ -43,6 +44,13 @@ public class ProjectListPage extends BasePage {
     public void openProject(String title) {
         driver.findElement(By.xpath(String.format(PROJECT_NAME, title))).click();
     }
+
+    @Step("Open project's settings")
+    public void openSettings(String title) {
+        driver.findElement(By.xpath(String.format(DROPDOWN_SETTINGS, title))).click();
+        driver.findElement(By.xpath(String.format(SETTINGS, title))).click();
+    }
+
 
     @Step("Delete project")
     public void deleteProject(String title) {

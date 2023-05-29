@@ -1,5 +1,6 @@
 package tests.base;
 
+import adapters.CaseAdapter;
 import adapters.ProjectAdapter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,9 @@ public class BaseTest {
     protected ProjectListPage projectListPage;
     protected RepositoryPage repositoryPage;
     protected ProjectAdapter projectAdapter;
-    protected NewTestCasePage newTestCasePage;
+    protected TestCasePage testCasePage;
+    protected ProjectSettingsPage projectSettingsPage;
+    protected CaseAdapter caseAdapter;
 
     protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
     protected String password = System.getProperty("password", PropertyReader.getProperty("password"));
@@ -52,8 +55,10 @@ public class BaseTest {
         newProjectPage = new NewProjectPage(driver);
         projectListPage = new ProjectListPage(driver);
         repositoryPage = new RepositoryPage(driver);
-        newTestCasePage = new NewTestCasePage(driver);
+        testCasePage = new TestCasePage(driver);
         projectAdapter = new ProjectAdapter();
+        projectSettingsPage = new ProjectSettingsPage(driver);
+        caseAdapter = new CaseAdapter();
     }
 
     @AfterMethod(alwaysRun = true)
