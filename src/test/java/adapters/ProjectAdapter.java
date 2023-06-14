@@ -10,18 +10,19 @@ public class ProjectAdapter extends BaseAdapter{
     public void create(Project project) {
         requestSpecification.
                 body(project).
-                when().
+                log().body().
+        when().
                 post(BASE_URL+POSTFIX).
-                then().
+        then().
                 log().body().
                 statusCode(200);
     }
 
     public void delete(String code) {
         requestSpecification.
-                when().
+        when().
                 delete(BASE_URL+POSTFIX+code).
-                then().
+        then().
                 log().body().
                 statusCode(200);
     }

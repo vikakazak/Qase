@@ -31,6 +31,7 @@ public class TestCasePage extends BasePage{
 
     @Step("Saving new test case")
     public void save() {
+        log.info("Saving new test case");
         driver.findElement(SAVE_BUTTON).click();
     }
 }

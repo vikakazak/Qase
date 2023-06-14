@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 @Log4j2
 public class RepositoryPage extends BasePage {
     String REPOSITORY_NAME = "//h1[contains(text() , '%s')]";
-    String TEST_CASE_NAME = "//*[text()='%s']";
+    String TEST_CASE_NAME = "//*[text()=\"%s\"]";
     String TEST_CASE_CHECKBOX = "//*[text()='%s']/../div[1]";
     public static final By DELETE_BUTTON = By.xpath("//*[text()=' Delete']");
     public static final By DELETE_INPUT = By.cssSelector("input[name=confirm]");
