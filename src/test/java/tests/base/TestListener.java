@@ -13,7 +13,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        log.info(String.format("======================================== STARTING TEST {} ========================================", iTestResult.getName()));
+        log.info(String.format("======================================== STARTING TEST %s ========================================", iTestResult.getName()));
     }
 
     @Override
