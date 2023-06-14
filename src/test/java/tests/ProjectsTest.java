@@ -17,7 +17,7 @@ public class ProjectsTest extends BaseTest {
                 .login(user, password);
         assertTrue(projectListPage.isOpened(), "Login is not successful");
         projectListPage.clickCreate();
-        newProjectPage.createProject(project.getTitle(), project.getCode(), project.getDescription());;
+        newProjectPage.createProject(project);
         projectListPage.open();
         assertEquals(projectListPage.getNumberOfProjects(project.getTitle()), 1,
                 "Project isn't displayed in the list");
@@ -34,7 +34,7 @@ public class ProjectsTest extends BaseTest {
                 .login(user, password);
         assertTrue(projectListPage.isOpened(), "Login is not successful");
         projectListPage.openSettings(project.getTitle());
-        projectSettingsPage.updateProject(project1.getTitle(), project1.getCode(), project1.getDescription());
+        projectSettingsPage.updateProject(project1);
         projectListPage.open();
         assertEquals(projectListPage.getNumberOfProjects(project1.getTitle()), 1,
                 "Project isn't displayed in the list");

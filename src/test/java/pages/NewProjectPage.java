@@ -1,5 +1,6 @@
 package pages;
 
+import dto.Project;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +20,11 @@ public class NewProjectPage extends BasePage {
 
 
     @Step("Create new project")
-    public void createProject(String name, String code, String description) {
-        driver.findElement(PROJECT_NAME).sendKeys(name);
+    public void createProject(Project project) {
+        driver.findElement(PROJECT_NAME).sendKeys(project.getTitle());
         driver.findElement(PROJECT_CODE).clear();
-        driver.findElement(PROJECT_CODE).sendKeys(code);
-        driver.findElement(DESCRIPTION).sendKeys(description);
+        driver.findElement(PROJECT_CODE).sendKeys(project.getCode());
+        driver.findElement(DESCRIPTION).sendKeys(project.getDescription());
         driver.findElement(PUBLIC_RADIOBUTTON).click();
         driver.findElement(CREATE_BUTTON).click();
     }

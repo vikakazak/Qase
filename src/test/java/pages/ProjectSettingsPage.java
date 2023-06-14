@@ -1,5 +1,6 @@
 package pages;
 
+import dto.Project;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,13 +19,13 @@ public class ProjectSettingsPage extends BasePage{
 
 
     @Step("Update project")
-    public void updateProject(String name, String code, String description) {
+    public void updateProject(Project project) {
         driver.findElement(PROJECT_NAME).clear();
-        driver.findElement(PROJECT_NAME).sendKeys(name);
+        driver.findElement(PROJECT_NAME).sendKeys(project.getTitle());
         driver.findElement(PROJECT_CODE).clear();
-        driver.findElement(PROJECT_CODE).sendKeys(code);
+        driver.findElement(PROJECT_CODE).sendKeys(project.getCode());
         driver.findElement(DESCRIPTION).clear();
-        driver.findElement(DESCRIPTION).sendKeys(description);
+        driver.findElement(DESCRIPTION).sendKeys(project.getDescription());
         driver.findElement(PRIVATE_RADIOBUTTON).click();
         driver.findElement(UPDATE_BUTTON).click();
     }

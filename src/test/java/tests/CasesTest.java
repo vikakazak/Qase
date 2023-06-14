@@ -47,7 +47,7 @@ public class CasesTest extends BaseTest {
                 .open(project.getCode())
                 .editTestCase(randomTest.getTitle());
         testCasePage
-                .editTitle(randomTest1)
+                .fillIn(randomTest1)
                 .save();
         assertEquals(repositoryPage.getNumberOfTestCases(randomTest1.getTitle()), 1,
                 "Test case wasn't changed");

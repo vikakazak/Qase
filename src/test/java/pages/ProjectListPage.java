@@ -51,7 +51,6 @@ public class ProjectListPage extends BasePage {
         driver.findElement(By.xpath(String.format(SETTINGS, title))).click();
     }
 
-
     @Step("Delete project")
     public void deleteProject(String title) {
         driver.findElement(By.xpath(String.format(DROPDOWN_SETTINGS, title))).click();
@@ -60,6 +59,7 @@ public class ProjectListPage extends BasePage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(DELETE_MODAL));
     }
 
+    @Step("Check how many projects exist")
     public int getNumberOfProjects(String project) {
         return driver.findElements(By.xpath(String.format(PROJECT_NAME, project))).size();
     }

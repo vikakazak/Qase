@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
-    public static final By EMAIL_INPUT = By.id("inputEmail");
-    public static final By PASSWORD_INPUT = By.id("inputPassword");
-    public static final By LOGIN_BUTTON = By.id("btnLogin");
+    public static final By EMAIL_INPUT = By.name("email");
+    public static final By PASSWORD_INPUT = By.name("password");
+    public static final By LOGIN_BUTTON = By.cssSelector("[type='submit']");
 
     public LoginPage(WebDriver driver) {
         super(driver);

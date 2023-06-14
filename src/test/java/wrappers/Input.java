@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class Input {
     String label;
     WebDriver driver;
-    String baseLocator = "//label[text()='%s']/../div/input";
+    String baseLocator = "//label[text()='%s']/..//p";
 
     public Input(WebDriver driver, String label){
         this.driver = driver;
@@ -14,10 +14,7 @@ public class Input {
     }
 
     public void write(String text) {
-        driver.findElement(By.xpath(String.format(baseLocator, label))).sendKeys(text);
-    }
-
-    public void clear() {
         driver.findElement(By.xpath(String.format(baseLocator, label))).clear();
+        driver.findElement(By.xpath(String.format(baseLocator, label))).sendKeys(text);
     }
 }
