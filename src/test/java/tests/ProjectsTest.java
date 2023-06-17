@@ -17,11 +17,28 @@ public class ProjectsTest extends BaseTest {
                 .login(user, password);
         assertTrue(projectListPage.isOpened(), "Login is not successful");
         projectListPage.clickCreate();
-        newProjectPage.createProject(project.getTitle(), project.getCode(), project.getDescription());;
+        newProjectPage.createProject(project);
         projectListPage.open();
         assertEquals(projectListPage.getNumberOfProjects(project.getTitle()), 1,
                 "Project isn't displayed in the list");
         projectAdapter.delete(project.getCode());
+    }
+
+    @Test(description = "Update project")
+    public void updateProject() {
+        Project project = ProjectFactory.getRandom();
+        Project project1 = ProjectFactory.getRandom();
+        projectAdapter.create(project);
+        loginPage
+                .open()
+                .login(user, password);
+        assertTrue(projectListPage.isOpened(), "Login is not successful");
+        projectListPage.openSettings(project.getTitle());
+        projectSettingsPage.updateProject(project1);
+        projectListPage.open();
+        assertEquals(projectListPage.getNumberOfProjects(project1.getTitle()), 1,
+                "Project isn't displayed in the list");
+        projectAdapter.delete(project1.getCode());
     }
 
     @Test(description = "Delete project")

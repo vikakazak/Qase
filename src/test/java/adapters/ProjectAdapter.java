@@ -1,37 +1,32 @@
 package adapters;
 
 import dto.Project;
-import lombok.Data;
-import utils.PropertyReader;
+import lombok.extern.log4j.Log4j2;
 
 import static io.restassured.RestAssured.*;
 
-@Data
-public class ProjectAdapter{
-    public static final String BASE_URL = PropertyReader.getProperty("base.api");
+@Log4j2
+public class ProjectAdapter extends BaseAdapter{
     public static final String POSTFIX = "/v1/project/";
-    public ProjectAdapter() {
-        requestSpecification = given().
-                header("content-type", "application/json").
-                header("Token", System.getProperty("token", PropertyReader.getProperty("token")));
-    }
 
     public void create(Project project) {
+        log.info("Create project by api: {}", project);
         requestSpecification.
                 body(project).
-                when().
+                log().body().
+        when().
                 post(BASE_URL+POSTFIX).
-                then().
-                log().all().
+        then().
+                log().body().
                 statusCode(200);
     }
 
     public void delete(String code) {
         requestSpecification.
-                when().
+        when().
                 delete(BASE_URL+POSTFIX+code).
-                then().
-                log().all().
+        then().
+                log().body().
                 statusCode(200);
     }
 }
